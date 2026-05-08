@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ejemplo uso bbdd integrada h2 con thymeleaf</title>
+	<style>
+	        body { 
+	            font-family: Arial, sans-serif; 
+	            margin: 40px; 
+	            background-color: #f8f9fa;
+	        }
+	        h1 { text-align: center; color: #2c3e50; }
+	        table { 
+	            border-collapse: collapse; 
+	            width: 90%; 
+	            margin: 20px auto; 
+	            background: white;
+	            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	        }
+	        th, td { 
+	            border: 1px solid #ddd; 
+	            padding: 12px; 
+	            text-align: left;
+	        }
+	        th { 
+	            background-color: #3498db; 
+	            color: white;
+	        }
+	        tr:nth-child(even) { background-color: #f2f2f2; }
+	    </style>
+</head>
+
+<body>
+	<h1>Productos en Base de Datos H2</h1>
+	    
+	    <table>
+	        <thead>
+	            <tr>
+	                <th>ID</th>
+	                <th>Nombre</th>
+	                <th>Precio</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="producto : ${productos}">
+	                <td th:text="${producto.id}"></td>
+	                <td th:text="${producto.nombre}"></td>
+	                <td th:text="${producto.precio}"></td>
+	            </tr>
+	        </tbody>
+	    </table>
+
+	    <p th:if="${productos.isEmpty()}" style="text-align:center; color:red;">
+	        No hay productos registrados.
+	    </p>
+
+</body>
+
+</html>
